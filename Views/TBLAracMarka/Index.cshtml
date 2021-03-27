@@ -1,0 +1,35 @@
+﻿@using MvcOtopark.Models.Entity
+@model List<TBLAracMarka>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Araç Marka Listesi</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Marka</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+
+
+    </tr>
+    <tbody>
+        @foreach (var arac in Model)
+        {
+        <tr>
+            <th>@arac.ID</th>
+            <td>@arac.Marka</td>
+            <td><a href="/TBLAracMarka/Sil/@arac.ID" class="btn btn-danger">SİL</a></td>
+            <td><a href="/TBLAracMarka/MarkaGetir/@arac.ID" class="btn btn-success">GÜNCELLE</a></td>
+
+
+        </tr>
+        }
+    </tbody>
+
+</table>
+<a href=" /TBLAracMarka/YeniMarka/" class="btn btn-primary">YENİ MARKA EKLE</a>
+
+

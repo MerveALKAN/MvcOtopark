@@ -1,0 +1,43 @@
+﻿@model MvcOtopark.Models.Entity.TBLMusteriler
+@{
+    ViewBag.Title = "MusteriGetir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Musteri Güncelleme Sayfası</h2>
+
+@using (Html.BeginForm("Guncelle", "TBLMusteri", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.LabelFor(m => m.ID)
+    @Html.TextBoxFor(m => m.ID, new { @class = "form-control" })
+
+    <br />
+
+    @Html.LabelFor(m => m.MusteriAdi)
+    @Html.TextBoxFor(m => m.MusteriAdi, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(m => m.MusteriSoyadi)
+    @Html.TextBoxFor(m => m.MusteriSoyadi, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(m => m.MusteriTc)
+    @Html.TextBoxFor(m => m.MusteriTc, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(m => m.MusteriTel)
+    @Html.TextBoxFor(m => m.MusteriTel, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(m => m.MusteriAdresi)
+    @Html.TextBoxFor(m => m.MusteriAdresi, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(m => m.MusteriMail)
+    @Html.TextBoxFor(m => m.MusteriMail, new { @class = "form-control" })
+</div>
+    <div>
+        <button class="btn btn-warning">Güncelle</button>
+    </div>
+}

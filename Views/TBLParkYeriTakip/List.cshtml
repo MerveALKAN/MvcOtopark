@@ -1,0 +1,74 @@
+﻿@model List<MvcOtopark.Models.Entity.TBLParkYeriTakip>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    var grid = new WebGrid(source: Model, canPage: true, rowsPerPage: 4);
+    grid.Pager(WebGridPagerModes.All);
+}
+<style type="text/css">
+    .webgrid-table {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        font-size: 1.2em;
+        
+        width: 100%;
+        display: table;
+        border-collapse: separate;
+        border: solid 1px #000000;
+        background-color: white;
+    }
+
+        .webgrid-table td, th {
+            border: 1px solid #000000;
+            padding: 3px 7px 2px;
+            
+            
+        }
+
+    .webgrid-header {
+        background-color: #55c793;
+        color:#ff0000;
+        padding-bottom: 4px;
+        padding-top: 5px;
+        text-align: left;
+     
+       
+    }
+
+    .webgrid-footer {
+        
+    }
+
+    .webgrid-row-style {
+        padding: 3px 7px 2px;
+    }
+
+    .webgrid-alternating-row {
+        background-color: #9be0c1;
+        padding: 3px 7px 2px;
+    }
+
+    .mousehover{
+        cursor:pointer;
+        background-color:yellow;
+    }
+</style>
+
+
+<div id="Content">
+    @grid.GetHtml(
+    tableStyle: "webgrid-table",
+    headerStyle: "webgrid-header",
+    footerStyle: "webgrid-footer",
+    alternatingRowStyle: "webgrid-alternating-row",
+    rowStyle: "webgrid-row-style ",
+    columns: grid.Columns(
+        grid.Column(columnName: "ID", header: "ID"),
+        grid.Column(columnName: "ParkYerleri", header: "Park Yerleri"),
+        grid.Column(columnName: "ParkYeriDurum", header: "Park Yeri Boş Mu Dolu Mu?",
+        format:@<text><input type="checkbox" checked="@item.ParkYeriDurum" disabled="disabled"/>
+    </text>))
+
+    )
+</div>
+

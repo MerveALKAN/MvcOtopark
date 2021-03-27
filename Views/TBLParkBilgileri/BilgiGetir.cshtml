@@ -1,0 +1,73 @@
+﻿@model MvcOtopark.Models.Entity.TBLParkBilgileri
+
+    @{
+    ViewBag.Title = "BilgiGetir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Bilgi Güncelleme Sayfası</h2>
+
+@using (Html.BeginForm("Guncelle", "TBLParkBilgileri", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.LabelFor(m => m.ID)
+    @Html.TextBoxFor(m => m.ID, new { @class = "form-control" })
+
+
+    <br />
+
+    @Html.LabelFor(m => m.Ad)
+    @Html.TextBoxFor(m => m.Ad, new { @class = "form-control" })
+   
+    <br />
+
+    @Html.LabelFor(m => m.Soyad)
+    @Html.TextBoxFor(m => m.Soyad, new { @class = "form-control" })
+
+
+    <br />
+
+    @Html.LabelFor(m => m.Telefon)
+    @Html.TextBoxFor(m => m.Telefon, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(m => m.MarkaID)
+    @*@Html.DropDownListFor(m => m.TBLAracMarka.ID,( List<SelectListItem>)ViewBag.dgr,new { @class = "form-control" })*@
+    @Html.TextBoxFor(m => m.MarkaID, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(m => m.SeriID)
+    @Html.TextBoxFor(m => m.SeriID, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(m => m.Model)
+    @Html.TextBoxFor(m => m.Model, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(m => m.Renk)
+    @Html.TextBoxFor(m => m.Renk, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(m => m.Plaka)
+    @Html.TextBoxFor(m => m.Plaka, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(m => m.Yil)
+    @Html.TextBoxFor(m => m.Yil, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(m => m.ParkYeriID)
+    @Html.TextBoxFor(m => m.ParkYeriID, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(m => m.GirisTarihi)
+    @Html.TextBoxFor(m => m.GirisTarihi, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(m => m.CikisTarihi)
+    @Html.TextBoxFor(m => m.CikisTarihi, new { @class = "form-control" })
+</div>
+    <div>
+        <button class="btn btn-warning">Güncelle</button>
+    </div>
+}

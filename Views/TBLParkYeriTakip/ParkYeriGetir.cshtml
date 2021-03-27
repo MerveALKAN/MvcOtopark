@@ -1,0 +1,30 @@
+﻿@model MvcOtopark.Models.Entity.TBLParkYeriTakip
+ 
+@{
+    ViewBag.Title = "ParkYeriGetir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Park Yeri Güncelleme Sayfası</h2>
+
+@using (Html.BeginForm("Guncelle", "TBLParkYeriTakip", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.LabelFor(m => m.ID)
+    @Html.TextBoxFor(m => m.ID, new { @class = "form-control" })
+
+    <br />
+
+    @Html.LabelFor(m => m.ParkYerleri)
+    @Html.TextBoxFor(m => m.ParkYerleri, new { @class = "form-control" })
+
+
+    <br />
+
+    @Html.LabelFor(m => m.ParkYeriDurum)
+    @Html.TextBoxFor(m => m.ParkYeriDurum, new { @class = "form-control" })
+</div>
+    <div>
+        <button class="btn btn-warning">Güncelle</button>
+    </div>
+}

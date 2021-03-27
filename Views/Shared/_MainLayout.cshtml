@@ -1,0 +1,50 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Otopark Takip</title>
+    <link rel="icon" type="image/x-icon" href="~/img/favicon.ico" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/Home/Index/">Anasayfa</a>
+            </div>
+            <ul class="nav navbar-nav">
+               
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Otopark <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/TBLKullanıcı/Index/">Kullanıcılar</a></li>
+                        <li><a href="/TBLMusteri/Index/">Müşteriler</a></li>
+                        <li><a href="/TBLParkBilgileri/Index/">Park Bilgileri</a></li>
+                        <li><a href="/TBLParkYeriTakip/Index/">Park Yeri Takip</a></li>
+                       
+                    </ul>
+                </li>
+                <li><a href="/Guvenlik/GirisYap/"><span class="glyphicon glyphicon-log-in"></span> Giriş Yap</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/Guvenlik/Kayıt/"><span class="glyphicon glyphicon-user"></span> Kayıt ol</a></li>
+                <li><a href="/Guvenlik/CikisYap/"><span class="glyphicon glyphicon-log-in"></span> Çıkış Yap</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        @RenderBody()
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+﻿@model MvcOtopark.Models.Entity.TBLParkBilgileri
+@{
+    ViewBag.Title = "YeniBilgi";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Yeni Bilgi</h2>
+<form class="form-group" method="post">
+
+    @*<div>
+            <label>Müşteri ID</label>
+            <input type="text" class="form-control" name="MüşteriID" />
+
+        </div>*@
+    <div>
+        <label>Müşteri ID</label>
+      
+        @Html.TextBoxFor(m => m.MusteriID, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.MusteriID, "", new { @style = "color:red" })
+    </div>
+    <div>
+        <label>Adı</label>
+        <input type="text" class="form-control" name="Ad" required="" />
+
+    </div>
+    <div>
+        <label>Soyad</label>
+        <input type="text" class="form-control" name="Soyad" required="" />
+
+    </div>
+    <div>
+        <label>Telefon</label>
+        <input type="text" class="form-control" name="Telefon" required="" maxlength="11" />
+
+    </div>
+    @*<div>
+            <label>Marka ID</label>
+            <input type="text" class="form-control" name="Marka ID" required="" />
+
+        </div>*@
+    <div>
+        <label>Marka ID</label>
+        @Html.TextBoxFor(m => m.MarkaID, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.MarkaID, "", new { @style = "color:red" })
+    </div>
+    <div>
+        <label>Seri ID</label>
+        <input type="text" class="form-control" name="SeriID" required="" />
+
+    </div>
+    <div>
+        <label>Model</label>
+        <input type="text" class="form-control" name="Model" required="" />
+
+    </div>
+    <div>
+        <label>Renk</label>
+        <input type="text" class="form-control" name="Renk" required="" />
+
+    </div>
+    <div>
+        <label>Plaka</label>
+        <input type="text" class="form-control" name="Plaka" required="" />
+
+    </div>
+    @*<div>
+            <label>Yıl</label>
+            <input type="text" class="form-control" name="Yil" required="" maxlength="4" />
+
+        </div>*@
+    <div>
+        <label>Yıl</label>
+        @Html.TextBoxFor(m => m.Yil, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Yil, "", new { @style = "color:red" })
+    </div>
+    <div>
+        <label>Park Yeri ID</label>
+        <input type="text" class="form-control" name="ParkYeriID" required="" />
+
+    </div>
+    <div>
+        <label>Giriş Tarihi</label>
+        <input type="text" class="form-control" name="GirisTarihi" required="" />
+
+    </div>
+    @*<div>
+            <label>Çıkış Tarihi</label>
+            <input type="text" class="form-control" name="CıkısTarihi" required="" />
+
+        </div>*@
+    <div>
+        <label>Çıkış Tarihi</label>
+        @Html.TextBoxFor(m => m.CikisTarihi, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CikisTarihi, "", new { @style = "color:red" })
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Ekle</button>
+    </div>
+
+</form>
+
+

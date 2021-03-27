@@ -1,0 +1,62 @@
+﻿@model MvcOtopark.Models.Entity.TBLKullanıcılar
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <title>Kayıt Ol</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- LINEARICONS -->
+    <link rel="stylesheet" href="~/register/fonts/linearicons/style.css">
+
+    <!-- STYLE CSS -->
+    <link rel="stylesheet" href="~/register/css/style.css">
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="inner">
+
+            <img src="~/register/images/image-1.png" alt="" class="image-1">
+            @using (Html.BeginForm("Kayıt", "Guvenlik", FormMethod.Post))
+            {
+                <h3>Yeni Kayıt</h3>
+                <div class="form-holder">
+                    <span class="lnr lnr-user"></span>
+                    <input type="text" class="form-control" placeholder="Kullanıcı Adı" required="" name="KullanıcıAdi">
+                </div>
+                <div class="form-holder">
+                    <span class="lnr lnr-phone-handset"></span>
+                    <input type="text" class="form-control" placeholder="Telefon Numarası" required="" name="Telefon">
+                </div>
+                <div class="form-holder">
+                    <span class="lnr lnr-envelope"></span>
+                    <input type="text" class="form-control" placeholder="Mail" required="" name="Mail">
+                </div>
+                <div class="form-holder">
+                    <span class="lnr lnr-lock"></span>
+                    <input type="password" class="form-control" placeholder="Şifre" required="" name="Sifre">
+                </div>
+                <div class="form-holder">
+                    <span class="lnr lnr-lock"></span>
+                    <input type="password" class="form-control" placeholder="Lütfen Şifrenizi Tekrar Giriniz" required="" name="Sifre">
+                </div>
+                <button>
+                    <span>Kayıt Ol</span>
+                </button>
+            }
+
+            <img src="~/register/images/image-2.png" alt="" class="image-2">
+        </div>
+
+    </div>
+
+    <script src="~/register/js/jquery-3.3.1.min.js"></script>
+    <script src="~/register/js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

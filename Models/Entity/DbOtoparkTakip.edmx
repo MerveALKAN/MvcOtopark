@@ -1,0 +1,323 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DbOtoparkTakipModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TBLAracMarka">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Marka" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TBLAracSeri">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MarkaID" Type="int" />
+          <Property Name="Seri" Type="int" />
+        </EntityType>
+        <EntityType Name="TBLKullanıcılar">
+          <Key>
+            <PropertyRef Name="KullanıcıID" />
+          </Key>
+          <Property Name="KullanıcıID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KullanıcıAdi" Type="varchar" MaxLength="20" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="10" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="11" />
+        </EntityType>
+        <EntityType Name="TBLMusteriler">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MusteriAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="MusteriSoyadi" Type="nvarchar" MaxLength="50" />
+          <Property Name="MusteriTc" Type="nvarchar" MaxLength="11" />
+          <Property Name="MusteriTel" Type="nvarchar" MaxLength="11" />
+          <Property Name="MusteriAdresi" Type="nvarchar" MaxLength="50" />
+          <Property Name="MusteriMail" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TBLParkBilgileri">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MusteriID" Type="int" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="50" />
+          <Property Name="MarkaID" Type="int" Nullable="false" />
+          <Property Name="SeriID" Type="int" Nullable="false" />
+          <Property Name="Model" Type="nvarchar" MaxLength="50" />
+          <Property Name="Renk" Type="nvarchar" MaxLength="50" />
+          <Property Name="Plaka" Type="nvarchar" MaxLength="50" />
+          <Property Name="Yil" Type="date" />
+          <Property Name="ParkYeriID" Type="int" Nullable="false" />
+          <Property Name="GirisTarihi" Type="date" />
+          <Property Name="CikisTarihi" Type="date" />
+        </EntityType>
+        <EntityType Name="TBLParkYeriTakip">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParkYerleri" Type="nvarchar" MaxLength="50" />
+          <Property Name="ParkYeriDurum" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_TBLAracSeri_TBLAracMarka">
+          <End Role="TBLAracMarka" Type="Self.TBLAracMarka" Multiplicity="0..1" />
+          <End Role="TBLAracSeri" Type="Self.TBLAracSeri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLAracMarka">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLAracSeri">
+              <PropertyRef Name="MarkaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbOtoparkTakipModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLAracMarka" EntityType="Self.TBLAracMarka" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLAracSeri" EntityType="Self.TBLAracSeri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLKullanıcılar" EntityType="Self.TBLKullanıcılar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLMusteriler" EntityType="Self.TBLMusteriler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLParkBilgileri" EntityType="Self.TBLParkBilgileri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLParkYeriTakip" EntityType="Self.TBLParkYeriTakip" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TBLAracSeri_TBLAracMarka" Association="Self.FK_TBLAracSeri_TBLAracMarka">
+            <End Role="TBLAracMarka" EntitySet="TBLAracMarka" />
+            <End Role="TBLAracSeri" EntitySet="TBLAracSeri" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DbOtoparkTakipModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TBLAracMarka">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Marka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TBLAracSeri" Relationship="Self.FK_TBLAracSeri_TBLAracMarka" FromRole="TBLAracMarka" ToRole="TBLAracSeri" />
+        </EntityType>
+        <EntityType Name="TBLAracSeri">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MarkaID" Type="Int32" />
+          <Property Name="Seri" Type="Int32" />
+          <NavigationProperty Name="TBLAracMarka" Relationship="Self.FK_TBLAracSeri_TBLAracMarka" FromRole="TBLAracSeri" ToRole="TBLAracMarka" />
+        </EntityType>
+        <EntityType Name="TBLKullanıcılar">
+          <Key>
+            <PropertyRef Name="KullanıcıID" />
+          </Key>
+          <Property Name="KullanıcıID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KullanıcıAdi" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Sifre" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBLMusteriler">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MusteriAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MusteriSoyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MusteriTc" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="MusteriTel" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="MusteriAdresi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MusteriMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBLParkBilgileri">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MusteriID" Type="Int32" Nullable="false" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MarkaID" Type="Int32" Nullable="false" />
+          <Property Name="SeriID" Type="Int32" Nullable="false" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Renk" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Plaka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Yil" Type="DateTime" Precision="0" />
+          <Property Name="ParkYeriID" Type="Int32" Nullable="false" />
+          <Property Name="GirisTarihi" Type="DateTime" Precision="0" />
+          <Property Name="CikisTarihi" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="TBLParkYeriTakip">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParkYerleri" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParkYeriDurum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_TBLAracSeri_TBLAracMarka">
+          <End Role="TBLAracMarka" Type="Self.TBLAracMarka" Multiplicity="0..1" />
+          <End Role="TBLAracSeri" Type="Self.TBLAracSeri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLAracMarka">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLAracSeri">
+              <PropertyRef Name="MarkaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbOtoparkTakipEntities7" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TBLAracMarka" EntityType="Self.TBLAracMarka" />
+          <EntitySet Name="TBLAracSeri" EntityType="Self.TBLAracSeri" />
+          <EntitySet Name="TBLKullanıcılar" EntityType="Self.TBLKullanıcılar" />
+          <EntitySet Name="TBLMusteriler" EntityType="Self.TBLMusteriler" />
+          <EntitySet Name="TBLParkBilgileri" EntityType="Self.TBLParkBilgileri" />
+          <EntitySet Name="TBLParkYeriTakip" EntityType="Self.TBLParkYeriTakip" />
+          <AssociationSet Name="FK_TBLAracSeri_TBLAracMarka" Association="Self.FK_TBLAracSeri_TBLAracMarka">
+            <End Role="TBLAracMarka" EntitySet="TBLAracMarka" />
+            <End Role="TBLAracSeri" EntitySet="TBLAracSeri" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DbOtoparkTakipModelStoreContainer" CdmEntityContainer="DbOtoparkTakipEntities7">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DbOtoparkTakipModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLAracMarka">
+            <EntityTypeMapping TypeName="DbOtoparkTakipModel.TBLAracMarka">
+              <MappingFragment StoreEntitySet="TBLAracMarka">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Marka" ColumnName="Marka" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLAracSeri">
+            <EntityTypeMapping TypeName="DbOtoparkTakipModel.TBLAracSeri">
+              <MappingFragment StoreEntitySet="TBLAracSeri">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MarkaID" ColumnName="MarkaID" />
+                <ScalarProperty Name="Seri" ColumnName="Seri" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLKullanıcılar">
+            <EntityTypeMapping TypeName="DbOtoparkTakipModel.TBLKullanıcılar">
+              <MappingFragment StoreEntitySet="TBLKullanıcılar">
+                <ScalarProperty Name="KullanıcıID" ColumnName="KullanıcıID" />
+                <ScalarProperty Name="KullanıcıAdi" ColumnName="KullanıcıAdi" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLMusteriler">
+            <EntityTypeMapping TypeName="DbOtoparkTakipModel.TBLMusteriler">
+              <MappingFragment StoreEntitySet="TBLMusteriler">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MusteriAdi" ColumnName="MusteriAdi" />
+                <ScalarProperty Name="MusteriSoyadi" ColumnName="MusteriSoyadi" />
+                <ScalarProperty Name="MusteriTc" ColumnName="MusteriTc" />
+                <ScalarProperty Name="MusteriTel" ColumnName="MusteriTel" />
+                <ScalarProperty Name="MusteriAdresi" ColumnName="MusteriAdresi" />
+                <ScalarProperty Name="MusteriMail" ColumnName="MusteriMail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLParkBilgileri">
+            <EntityTypeMapping TypeName="DbOtoparkTakipModel.TBLParkBilgileri">
+              <MappingFragment StoreEntitySet="TBLParkBilgileri">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MusteriID" ColumnName="MusteriID" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="MarkaID" ColumnName="MarkaID" />
+                <ScalarProperty Name="SeriID" ColumnName="SeriID" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Renk" ColumnName="Renk" />
+                <ScalarProperty Name="Plaka" ColumnName="Plaka" />
+                <ScalarProperty Name="Yil" ColumnName="Yil" />
+                <ScalarProperty Name="ParkYeriID" ColumnName="ParkYeriID" />
+                <ScalarProperty Name="GirisTarihi" ColumnName="GirisTarihi" />
+                <ScalarProperty Name="CikisTarihi" ColumnName="CikisTarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLParkYeriTakip">
+            <EntityTypeMapping TypeName="DbOtoparkTakipModel.TBLParkYeriTakip">
+              <MappingFragment StoreEntitySet="TBLParkYeriTakip">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ParkYerleri" ColumnName="ParkYerleri" />
+                <ScalarProperty Name="ParkYeriDurum" ColumnName="ParkYeriDurum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

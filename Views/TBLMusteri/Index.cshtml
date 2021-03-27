@@ -1,0 +1,48 @@
+﻿@using MvcOtopark.Models.Entity
+@model List<TBLMusteriler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+@using (Html.BeginForm("Index","TBLMusteri",FormMethod.Get))
+{
+    <p>
+        Aranacak Müşteri Adı @Html.TextBox("p")
+        <input type="submit" value="Ara" />
+    </p>
+}
+
+<h2>Müşteri Listesi</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Müşteri ID</th>
+        <th>Müşteri Adı</th>
+        <th>Müşteri Soyadı</th>
+        <th>Müşteri Tc</th>
+        <th>Müşteri Telefon</th>
+        <th>Müşteri Adres</th>
+        <th>Müşteri Mail</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    <tbody>
+        @foreach(var musteri in Model)
+        {
+        <tr>
+            <td>@musteri.ID</td>
+            <td>@musteri.MusteriAdi</td>
+            <td>@musteri.MusteriSoyadi</td>
+            <td>@musteri.MusteriTc</td>
+            <td>@musteri.MusteriTel</td>
+            <td>@musteri.MusteriAdresi</td>
+            <td>@musteri.MusteriMail</td>
+            <td><a href="/TBLMusteri/Sil/@musteri.ID" class="btn btn-danger">SİL</a></td>
+            <td><a href="/TBLMusteri/MusteriGetir/@musteri.ID" class="btn btn-success">GÜNCELLE</a></td>
+
+        </tr>
+        }
+    </tbody>
+
+</table>
+<a href=" /TBLMusteri/YeniMusteri/" class="btn btn-primary">YENİ MÜŞTERİ EKLE</a>

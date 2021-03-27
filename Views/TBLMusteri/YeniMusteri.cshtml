@@ -1,0 +1,76 @@
+﻿@model MvcOtopark.Models.Entity.TBLMusteriler
+@{
+    ViewBag.Title = "YeniMusteri";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Yeni Müşteri</h2>
+<form class="form-group" method="post">
+    @*<div>
+            <label>Müşteri Adı</label>
+            <input type="text" class="form-control" name="MusteriAdi" />
+
+        </div>
+        <div>
+            <label>Müşteri Soyadı</label>
+            <input type="text" class="form-control" name="MusteriSoyadi" />
+
+        </div>*@
+    <div>
+        <label>Müşteri Adı</label>
+        @Html.TextBoxFor(m => m.MusteriAdi, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.MusteriAdi, "", new { @style = "color:red" })
+    </div>
+    <div>
+        <label>Müşteri Soyadı</label>
+        @Html.TextBoxFor(m => m.MusteriSoyadi, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.MusteriSoyadi, "", new { @style = "color:red" })
+    </div>
+    @*<div>
+            <label>Müşteri Tc.</label>
+            <input type="text" class="form-control" name="MusteriTc" />
+
+        </div>*@
+    <div>
+        <label>Müşteri Tc.</label>
+        @Html.TextBoxFor(m => m.MusteriTc, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.MusteriTc, "", new { @style = "color:red" })
+    </div>
+
+    @*<div>
+            <label>Müşteri Telefon</label>
+            <input type="text" class="form-control" name="MusteriTel" />
+
+        </div>*@
+    <div>
+        <label>Müşteri Telefon</label>
+        @Html.TextBoxFor(m => m.MusteriTel, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.MusteriTel, "", new { @style = "color:red" })
+    </div>
+    @*<div>
+            <label>Müşteri Adres</label>
+            <input type="text" class="form-control" name="MusteriAdresi" />
+
+        </div>*@
+    <div>
+        <label>Müşteri Adres</label>
+        @Html.TextBoxFor(m => m.MusteriAdresi, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.MusteriAdresi, "", new { @style = "color:red" })
+    </div>
+    @*<div>
+            <label>Müşteri Mail</label>
+            <input type="text" class="form-control" name="MusteriMail" />
+
+        </div>*@
+    <div>
+        <label>Müşteri Mail</label>
+        @Html.TextBoxFor(m => m.MusteriMail, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.MusteriMail, "", new { @style = "color:red" })
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Ekle</button>
+    </div>
+
+
+</form>
+

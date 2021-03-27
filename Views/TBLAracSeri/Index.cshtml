@@ -1,0 +1,32 @@
+﻿@using MvcOtopark.Models.Entity
+@model List<TBLAracSeri>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Araç Seri Listesi</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>Marka ID</th>
+        <th>Seri</th>
+       
+
+
+    </tr>
+    <tbody>
+        @foreach (var aracSeri in Model)
+        {
+        <tr>
+            <th>@aracSeri.MarkaID</th>
+            <td>@aracSeri.Seri</td>
+           
+
+
+        </tr>
+        }
+    </tbody>
+
+</table>
+<a href=" /TBLAracSeri/YeniSeri/" class="btn btn-primary">YENİ SERİ EKLE</a>
+

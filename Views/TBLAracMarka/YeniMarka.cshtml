@@ -1,0 +1,26 @@
+﻿@model MvcOtopark.Models.Entity.TBLAracMarka
+@{
+    ViewBag.Title = "YeniMarka";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Yeni Marka</h2>
+
+
+<form class="form-group" method="post">
+    @*<div>
+        <label>Marka Adı</label>
+        <input type="text" class="form-control" name="Marka" />
+
+    </div>*@
+    <div>
+        <label>Marka Adı</label>
+        @Html.TextBoxFor(m => m.Marka, new { @class="form-control"})
+        @Html.ValidationMessageFor(m => m.Marka, "", new { @style="color:red"})
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Ekle</button>
+    </div>
+
+</form>
+

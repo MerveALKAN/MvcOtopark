@@ -1,0 +1,44 @@
+﻿@using MvcOtopark.Models.Entity
+@model List<TBLKullanıcılar>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+@using (Html.BeginForm("Index", "TBLKullanıcı", FormMethod.Get))
+{
+    <p>
+        Aranacak Kullanıcı Adı @Html.TextBox("p")
+        <input type="submit" value="Ara" />
+    </p>
+}
+
+<h2>Kullanıcı Listesi</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Kullanıcı ID</th>
+        <th>Kullanıcı Adı</th>
+        <th>Kullanıcı Mail</th>
+        <th>Kullanıcı Telefon</th>
+
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    <tbody>
+        @foreach (var kullanıcı in Model)
+        {
+            <tr>
+                <th>@kullanıcı.KullanıcıID</th>
+                <td>@kullanıcı.KullanıcıAdi</td>
+                <th>@kullanıcı.Mail</th>
+                <td>@kullanıcı.Telefon</td>
+
+                <td><a href="/TBLKullanıcı/Sil/@kullanıcı.KullanıcıID" class="btn btn-danger">SİL</a></td>
+                <td><a href="/TBLKullanıcı/KullanıcıGetir/@kullanıcı.KullanıcıID" class="btn btn-success">GÜNCELLE</a></td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href=" /TBLKullanıcı/YeniKullanıcı/" class="btn btn-primary">YENİ KULLANICI EKLE</a>

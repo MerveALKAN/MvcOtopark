@@ -1,0 +1,33 @@
+﻿@model MvcOtopark.Models.Entity.TBLKullanıcılar
+@{
+    ViewBag.Title = "KullanıcıGetir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Kullanıcı Güncelleme Sayfası</h2>
+@using (Html.BeginForm("Guncelle", "TBLKullanıcı", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.LabelFor(m => m.KullanıcıID)
+    @Html.TextBoxFor(m => m.KullanıcıID, new { @class = "form-control" })
+
+    <br />
+
+    @Html.LabelFor(m => m.KullanıcıAdi)
+    @Html.TextBoxFor(m => m.KullanıcıAdi, new { @class = "form-control" })
+
+    <br />
+
+    @Html.LabelFor(m => m.Mail)
+    @Html.TextBoxFor(m => m.Mail, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(m => m.Telefon)
+    @Html.TextBoxFor(m => m.Telefon, new { @class = "form-control" })
+</div>
+    <div>
+        <button class="btn btn-warning">Güncelle</button>
+    </div>
+}
+
+

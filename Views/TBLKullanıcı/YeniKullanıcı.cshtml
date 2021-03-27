@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "YeniKullanıcı";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Yeni Kullanıcı</h2>
+<form class="form-group" method="post">
+
+    <div>
+        <label>Kullanıcı Adı</label>
+        <input type="text" class="form-control" name="KullanıcıAdi" required="" placeholder="Ad Giriniz" />
+
+    </div>
+
+    <div>
+        <label>Kullanıcı Maili</label>
+        <input type="text" class="form-control" name="Mail" required="" placeholder="Mail Adresi Giriniz" />
+
+    </div>
+
+    <div>
+        <label>Kullanıcı Telefonu</label>
+        <input type="text" class="form-control" name="Telefon" required="" placeholder="Telefon Numarası Giriniz" />
+
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Ekle</button>
+    </div>
+
+</form>
+

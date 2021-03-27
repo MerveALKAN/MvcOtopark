@@ -1,0 +1,30 @@
+﻿@model MvcOtopark.Models.Entity.TBLParkYeriTakip
+@{
+    ViewBag.Title = "YeniGiris";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+ 
+<h2>Yeni Giriş</h2>
+<form class="form-group" method="post">
+
+    <div>
+        <label>Park Yerleri</label>
+        @*@Html.DropDownListFor(m=>m.ParkYerleri,(List<SelectListItem>)ViewBag.dgr, new {  @class="form-control"} )*@
+        @Html.TextBoxFor(m => m.ParkYerleri, new { @class = "form-control" })
+    </div>
+
+    <div>
+        <label>Park Yeri Durum</label>
+        @*<input type="text" class="form-control" name="ParkYeriDurum" required="" placeholder="Durum giriniz" />*@
+        @Html.DropDownListFor(m=>m.ParkYeriDurum,(List<SelectListItem>)ViewBag.dgr, new {  @class="form-control"} )
+
+
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Ekle</button>
+    </div>
+
+</form>
+
+
+

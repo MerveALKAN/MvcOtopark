@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "YeniSeri";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Yeni Seri</h2>
+
+
+<form class="form-group" method="post">
+    <div>
+        <label>Marka ID</label>
+        <input type="text" class="form-control" name="MarkaID" />
+
+    </div>
+    <div>
+        <label>Seri Adı</label>
+        <input type="text" class="form-control" name="Seri"  required="" placeholder="Seri giriniz"/>
+
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Ekle</button>
+    </div>
+
+</form>
